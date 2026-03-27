@@ -1,0 +1,312 @@
+@tailwind base;
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 92%;
+    --foreground: 0 0% 6%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 6%;
+    --primary: 38 95% 53%;
+    --primary-foreground: 0 0% 6%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 15%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 38 95% 53%;
+    --accent-foreground: 0 0% 6%;
+    --destructive: 350 78% 39%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 38 95% 53%;
+    --radius: 0.25rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Amazon Ember", "DM Sans", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ─── Amazon Design Tokens ─────────────────────── */
+:root {
+  --amz-dark: #131921;
+  --amz-nav: #232f3e;
+  --amz-nav-hover: #3a4553;
+  --amz-orange: #f08804;
+  --amz-orange2: #ffa41c;
+  --amz-yellow: #ffd814;
+  --amz-yellow-hover: #f0c14b;
+  --amz-btn-border: #fcd200;
+  --amz-red: #cc0c39;
+  --amz-teal: #007185;
+  --amz-star: #f0a500;
+  --amz-price: #b12704;
+  --amz-text: #0f1111;
+  --amz-muted: #565959;
+  --amz-gray: #eaeded;
+  --amz-section: #f3f3f3;
+  --amz-border: #d5d9d9;
+  --amz-white: #ffffff;
+  /* Keep old tokens for pages we're not redesigning */
+  --gold: #c9a84c;
+  --gold-light: #e8c97e;
+  --gold-dark: #9a7a28;
+  --burgundy: #6b1a3a;
+  --burgundy-deep: #4e1029;
+  --burgundy-mid: #8b2248;
+  --burgundy-light: #a03058;
+  --ivory: #faf5f0;
+  --ivory2: #f2ebe5;
+  --muted-text: #8a7070;
+}
+
+/* ─── Amazon utility classes ─────────────────── */
+.amz-btn-primary {
+  background-color: var(--amz-yellow);
+  border: 1px solid var(--amz-btn-border);
+  color: var(--amz-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.amz-btn-primary:hover {
+  background-color: var(--amz-yellow-hover);
+}
+
+.amz-btn-secondary {
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+  border: 1px solid #a88734;
+  color: var(--amz-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.amz-btn-secondary:hover {
+  background: linear-gradient(to bottom, #f5d78e, #eeb933);
+}
+
+.amz-btn-buy {
+  background: linear-gradient(to bottom, #f9a825, #f08804);
+  border: 1px solid #b8742a;
+  color: var(--amz-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.amz-btn-buy:hover {
+  background: linear-gradient(to bottom, #f8a011, #e07803);
+}
+
+/* product card */
+.amz-product-card {
+  background: white;
+  border: 1px solid var(--amz-border);
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+.amz-product-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* section label (kept for compatibility) */
+.section-label {
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Gold rule for compat */
+.gold-rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.4) 30%,
+    rgba(201, 168, 76, 0.4) 70%,
+    transparent 100%
+  );
+}
+
+/* newsletter input */
+.newsletter-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: white;
+  padding: 0.75rem 1rem;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease;
+}
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+.newsletter-input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+/* qty btn */
+.qty-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(107, 26, 58, 0.2);
+  color: var(--burgundy);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.qty-btn:hover {
+  background: rgba(107, 26, 58, 0.05);
+}
+
+/* btn-gold for compat */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gold);
+  color: var(--burgundy-deep);
+  font-family: "DM Sans", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 0.85rem 2.25rem;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-gold:hover {
+  background-color: var(--gold-light);
+}
+.btn-ghost-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  font-family: "DM Sans", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: "DM Sans", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 0.85rem 2.25rem;
+  transition: all 0.2s ease;
+  background: transparent;
+  cursor: pointer;
+}
+.btn-outline-gold:hover {
+  background-color: var(--gold);
+  color: var(--burgundy-deep);
+}
+
+.product-card {
+  background: var(--ivory);
+  overflow: hidden;
+  cursor: pointer;
+}
+.product-card-shadow {
+  box-shadow: 0 1px 3px rgba(78, 16, 41, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+.product-card-shadow:hover {
+  box-shadow: 0 8px 32px rgba(78, 16, 41, 0.12);
+}
+
+/* Amazon search bar */
+.amz-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--amz-text);
+  background: white;
+  min-width: 0;
+}
+
+/* Amazon nav link hover */
+.amz-nav-link {
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  transition: outline 0.1s ease;
+  display: inline-block;
+}
+.amz-nav-link:hover {
+  outline: 1px solid white;
+  border-radius: 2px;
+}
